@@ -8,10 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.tranhuubinhb17dcat023.adapter.adapterChuyenMon;
+import com.example.tranhuubinhb17dcat023.model.B17DCAT023_ChuyenMon;
+import com.example.tranhuubinhb17dcat023.storage.SharedPrefManager;
+
+import java.util.ArrayList;
+
 public class ManChuyenMon extends AppCompatActivity {
 
     ListView lvChuyenMon;
     Button btnAddChuyenMon;
+
+    ArrayList<B17DCAT023_ChuyenMon> chuyenMonArrayList;
+
+    adapterChuyenMon adapterChuyenMon;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +39,9 @@ public class ManChuyenMon extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        chuyenMonArrayList = SharedPrefManager.getInstace(this).getAllChuyenMon();
+        adapterChuyenMon = new adapterChuyenMon(getApplicationContext(), chuyenMonArrayList);
+        lvChuyenMon.setAdapter(adapterChuyenMon);
     }
 }
