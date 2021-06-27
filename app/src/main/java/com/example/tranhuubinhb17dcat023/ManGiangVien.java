@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ManGiangVien extends AppCompatActivity {
 
     ListView lvGiangVien;
-    Button btnAddGiangVien;
+    Button btnAddGiangVien, btnDSGiangVien;
 
     ArrayList<B17DCAT023_GiangVien> giangVienArrayList;
 
@@ -30,11 +30,20 @@ public class ManGiangVien extends AppCompatActivity {
 
         lvGiangVien = findViewById(R.id.lvGiangVien);
         btnAddGiangVien = findViewById(R.id.btnAddGiangVien);
+        btnDSGiangVien = findViewById(R.id.btnDSGiangVien);
 
         btnAddGiangVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ManGiangVien.this, ManAddGiangVien.class);
+                startActivity(intent);
+            }
+        });
+
+        btnDSGiangVien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManGiangVien.this, ManDanhSach.class);
                 startActivity(intent);
             }
         });

@@ -5,27 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ManGiangVien">
+    tools:context=".ManDanhSach">
 
-    <Button
-        android:id="@+id/btnAddGiangVien"
+    <TextView
+        android:id="@+id/tvDanhSach"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Thêm giảng viên" />
-
-    <Button
-        android:id="@+id/btnDSGiangVien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Danh sách GV KN > 5" />
-
+        android:text="DS giảng viên kinh nghiệm > 5 năm"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <ListView
-        android:id="@+id/lvGiangVien"
+        android:id="@+id/lvKetQua"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnAddStudent" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
