@@ -8,10 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.tranhuubinhb17dcat023.adapter.adapterGiangVien;
+import com.example.tranhuubinhb17dcat023.model.B17DCAT023_GiangVien;
+import com.example.tranhuubinhb17dcat023.storage.SharedPrefManager;
+
+import java.util.ArrayList;
+
 public class ManGiangVien extends AppCompatActivity {
 
     ListView lvGiangVien;
     Button btnAddGiangVien;
+
+    ArrayList<B17DCAT023_GiangVien> giangVienArrayList;
+
+    adapterGiangVien adapterGiangVien;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +38,9 @@ public class ManGiangVien extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        giangVienArrayList = SharedPrefManager.getInstace(this).getAllGiangVien();
+        adapterGiangVien = new adapterGiangVien(getApplicationContext(), giangVienArrayList);
+        lvGiangVien.setAdapter(adapterGiangVien);
     }
 }
