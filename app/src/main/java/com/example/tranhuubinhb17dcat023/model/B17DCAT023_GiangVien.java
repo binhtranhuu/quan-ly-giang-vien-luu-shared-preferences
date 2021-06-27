@@ -1,5 +1,7 @@
 package com.example.tranhuubinhb17dcat023.model;
 
+import androidx.annotation.NonNull;
+
 public class B17DCAT023_GiangVien {
     private int id;
     private String name;
@@ -49,5 +51,21 @@ public class B17DCAT023_GiangVien {
 
     public void setKinhnghiem(String kinhnghiem) {
         this.kinhnghiem = kinhnghiem;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof B17DCAT023_GiangVien) {
+            B17DCAT023_GiangVien s = (B17DCAT023_GiangVien) obj;
+            if (s.getName().equals(name) && s.getId() == id) return true;
+        }
+
+        return false;
     }
 }

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.example.tranhuubinhb17dcat023.model.B17DCAT023_ChuyenMon;
 import com.example.tranhuubinhb17dcat023.model.B17DCAT023_GiangVien;
+import com.example.tranhuubinhb17dcat023.model.B17DCAT023_GiangVienChuyenMon;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -86,5 +87,35 @@ public class SharedPrefManager {
         }
 
         return chuyenMonArrayList;
+    }
+
+    // Quản lý chuyên môn
+    public void quanLyChuyenMon(ArrayList<B17DCAT023_GiangVienChuyenMon> giangVienChuyenMonArrayList) {
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(giangVienChuyenMonArrayList);
+        editor.putString("quan ly chuyen mon", json);
+        editor.apply();
+    }
+
+    // Lấy tất cả quản lý chuyên môn
+    public ArrayList<B17DCAT023_GiangVienChuyenMon> getAllQuanLyChuyenMon() {
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        ArrayList<B17DCAT023_GiangVienChuyenMon> giangVienChuyenMonArrayList = new ArrayList<>();
+
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("quan ly chuyen mon", null);
+        Type type = new TypeToken<ArrayList<B17DCAT023_GiangVienChuyenMon>>() {
+        }.getType();
+        giangVienChuyenMonArrayList = gson.fromJson(json, type);
+
+        if (giangVienChuyenMonArrayList == null) {
+            giangVienChuyenMonArrayList = new ArrayList<>();
+        }
+
+        return giangVienChuyenMonArrayList;
     }
 }
